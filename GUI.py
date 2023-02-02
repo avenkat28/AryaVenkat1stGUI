@@ -1,3 +1,10 @@
+#Arya Venkat
+#01/24/2023
+#Period 3 331
+# The goal of this project is to create a pop up which shows a logo and also has a button which leads to a pdf reader. 
+# When the file is chosen there will be an output that shows the pdf text.
+
+#imports
 import tkinter as tk
 import PyPDF2
 from PIL import Image, ImageTk
@@ -9,7 +16,7 @@ canvas = tk.Canvas(root, width=600, height=300)
 canvas.grid(columnspan=3, rowspan=3)
 
 #logo
-logo = Image.open('logo.png')
+logo = Image.open('logo.png') #giving the logo a name where it can be easily recovered from any computer not just local
 logo = ImageTk.PhotoImage(logo)
 logo_label = tk.Label(image=logo)
 logo_label.image = logo
@@ -20,7 +27,7 @@ instructions = tk.Label(root, text="Select a PDF file on your computer to extrac
 instructions.grid(columnspan=3, column=0, row=1)
 
 def open_file():
-    browse_text.set("loading...")
+    browse_text.set("loading...") #shows loading when the images is being chosen
     file = askopenfile(parent=root, mode='rb', title="Choose a file", filetypes=[("Pdf file", "*.pdf")])
     if file:
         read_pdf = PyPDF2.PdfFileReader(file)
@@ -34,7 +41,7 @@ def open_file():
         text_box.tag_add("center", 1.0, "end")
         text_box.grid(column=1, row=3)
     
-        browse_text.set("Browse")
+        browse_text.set("Browse") #Button text showing browse
 
 #browse button
 browse_text = tk.StringVar()
